@@ -21,7 +21,11 @@ body {
     font-weight: 700;
 }
 .games {
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 800px;
+    margin: 20px auto;
 }
 .game {
     background-color: white;
@@ -81,6 +85,7 @@ body {
 .age-difficulty-level h6 {
     margin-left: auto;
     margin-right: 2px;
+    text-transform: capitalize;
 }
 .category {
     display: flex;
@@ -98,7 +103,7 @@ body {
 }
 .btns {
     display: flex;
-    justify-content: center;
-    gap: 500px;
-    margin-top: 50px;
+    justify-content: space-between;
+    width: 820px;
+    margin: 50px auto;
 }
