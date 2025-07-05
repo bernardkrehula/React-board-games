@@ -2,7 +2,7 @@ const games = [
     {
         id: '1',
         name: 'Catan',
-        info: 'Trade, build, and settle in this modern classic. Compete to expand your settlements and control the island of ',
+        info: 'Trade, build, and settle in this modern classic. Compete to expand your settlements and control the island of Catan',
         ratting: '4',
         players: '3-4',
         allowedPlayerAge: '10',

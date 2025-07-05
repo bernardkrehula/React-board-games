@@ -7,11 +7,94 @@ html {
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    background-color: rgb(207, 233, 255);
+}
+.main {
+    width: 1000px;
+    margin: 0 auto;
+}
 .title {
     text-align: center;
     margin-top: 20px;
     font-size: 4.2rem;
     font-weight: 700;
+}
+.games {
+    margin-top: 20px;
+}
+.game {
+    background-color: white;
+    list-style: none;
+    width: 400px;
+    padding: 30px 25px;
+    border-radius: 5px;
+}
+.game h2, .stars {
+    display: inline-block;
+    vertical-align: middle;
+}
+.game h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    width: 50%;
+}
+.stars {
+    text-align: end;
+    font-size: 2rem;
+    width: 50%;
+}
+.game p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+.allowed-players-duration {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+.allowed-players-duration svg {
+    height: 15px;
+    width: 15px;
+    margin-right: 2px;
+}
+.time {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+}
+.age-difficulty-level {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+}
+.age-difficulty-level svg {
+    height: 15px;
+    width: 15px;
+}
+.age-difficulty-level h5, h6 {
+    font-size: 1rem;
+}
+.age-difficulty-level h5 {
+    margin-left: 2px;
+}
+.age-difficulty-level h6 {
+    margin-left: auto;
+    margin-right: 2px;
+}
+.category {
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    align-items: center;
+}
+.category svg {
+    height: 15px;
+    width: 15px;
+}
+.category span {
+    font-size: 1rem;
+    margin-left: 5px;
 }
 .btns {
     display: flex;
