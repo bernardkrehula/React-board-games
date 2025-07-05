@@ -44,9 +44,11 @@ body {
     width: 50%;
 }
 .stars {
-    text-align: end;
-    font-size: 2rem;
-    width: 50%;
+    float: right;
+}
+.stars svg {
+    width: 15px;
+    height: 15px;
 }
 .game p {
     font-size: 1.2rem;
