@@ -47,6 +47,7 @@ const SingleGame = ({game}) => {
               <span >{type}</span>
             </div>
             <Btn variation='learn-more'>Learn More</Btn>
+            <Btn variation='edit'>Edit</Btn>
           </li>
         </>
     )

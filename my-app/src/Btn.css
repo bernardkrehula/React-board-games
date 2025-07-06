@@ -8,7 +8,7 @@
     cursor: pointer;
 }
 .learn-more {
-    display: block;
+    display: inline;
     background-color: transparent;
     border: 2px solid yellow;
     border-radius: 10px;
@@ -17,4 +17,9 @@
 }
 .add-btn {
     margin-top: 10px;
+}
+.edit {
+    display: inline;
+    font-size: 1.2rem;
+    float: right;
 }

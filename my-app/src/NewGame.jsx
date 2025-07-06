@@ -49,7 +49,7 @@ const NewGame = ({isFormActive, addNewGame, displayAddNewGame}) => {
                         </li>
                         <li>
                             <h2>Allowed age</h2>
-                            <input type="text" name='age'/>       
+                            <input type="number" name='age'/>       
                         </li>
                         <li>
                             <h2>Duration</h2>
