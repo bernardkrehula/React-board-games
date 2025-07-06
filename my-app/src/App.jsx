@@ -3,6 +3,7 @@ import './App.css'
 import SingleGame from './Game'
 import Btn from './Btn'
 import games from './games'
+import NewGame from './NewGame'
 
 function App() {
   const [ getGames, setGames ] = useState(games);
@@ -26,6 +27,7 @@ function App() {
             )
           })}
         </ul>
+        <NewGame />
       </div>
     </>
   )
