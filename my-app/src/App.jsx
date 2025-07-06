@@ -10,7 +10,6 @@ function App() {
   const [ isFormActive, setActiveFrom ] = useState(false);
 
   const addNewGame = (newGame) => {
-    console.log(newGame)
     setGames(prev => [...prev, newGame])
   }
   const displayAddNewGame = () => {
