@@ -7,9 +7,14 @@ import NewGame from './NewGame'
 
 function App() {
   const [ getGames, setGames ] = useState(games);
+  const [ isFormActive, setActiveFrom ] = useState(false);
 
-  const addNewGame = () => {
-    setGames(prev => [...prev, ])
+  const addNewGame = (newGame) => {
+    console.log(newGame)
+    setGames(prev => [...prev, newGame])
+  }
+  const displayAddNewGame = () => {
+    setActiveFrom(prev => !prev);
   }
 
   return (
@@ -17,7 +22,7 @@ function App() {
       <div className='main'>
         <h1 className='title'>Board games</h1>
         <div className='btns'>
-          <Btn variation='new-game' onClick={() => {addNewGame()}}>Add new game</Btn>
+          <Btn variation='new-game' onClick={() => {displayAddNewGame()}}>Add new game</Btn>
           <Btn variation='save-pdf'>Save as PDF</Btn>
         </div>
         <ul className='games'>
@@ -27,7 +32,7 @@ function App() {
             )
           })}
         </ul>
-        <NewGame />
+        <NewGame isFormActive={isFormActive} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame}/>
       </div>
     </>
   )
