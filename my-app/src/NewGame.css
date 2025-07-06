@@ -1,10 +1,33 @@
 .new-game-comp {
     position: absolute;
     z-index: 2;
-    top: 35%;
-    left: 48%;
+    top: 10%;
+    left: 35%;
     background-color: white;
     box-shadow: 0px 0px 0px 1000px rgb(0, 0, 0, 0.7);
     padding: 30px 25px;
     border-radius: 5px;
+    width: 400px;
+}
+.new-game-comp h1 {
+    margin-bottom: 10px;
+}
+.new-game-comp ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.new-game-comp li {
+    list-style: none;
+}
+.new-game-comp input{
+    width: 100%;
+    margin-top: 3px;
+    font-size: 1.8rem;
+    border-radius: 3px;
+    border: 1px solid black;
+    padding: 3px 5px;
+}
+.new-game-comp select{
+    margin-top: 3px;
 }
