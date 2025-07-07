@@ -8,7 +8,6 @@ import NewGame from './NewGame'
 function App() {
   const [ getGames, setGames ] = useState(games);
   const [ isFormActive, setActiveFrom ] = useState(false);
-  const [ getValue, setValue ] = useState('')
 
   const setGameId = () => {
     setGames(prev => prev.map(game => ({...game, id: crypto.randomUUID()})))
@@ -18,14 +17,20 @@ function App() {
   }, []);
 
   const addNewGame = (newGame) => {
-    setGames(prev => [...prev, newGame])
+    if(newGame.isEdited){
+      setGames(prev => prev.map(game => game.id === newGame.id ? newGame : game))
+    }
+    else(
+      setGames(prev => [...prev, newGame])
+    )
   }
   const displayAddNewGame = () => {
     setActiveFrom(prev => !prev);
   }
   
   const getGameValues = (game) => {
-    setValue(game);
+    /* setGames(prev => prev.map(game => ({...game, isEdited: true}))) */
+    return game;
   }
   
   return (
@@ -39,7 +44,7 @@ function App() {
         <ul className='games'>
           {getGames.map(game => {
             return(
-               <SingleGame key={crypto.randomUUID()} game={game} displayAddNewGame={displayAddNewGame} getGameValues={getGameValues} />
+               <SingleGame key={game.id} game={game} displayAddNewGame={displayAddNewGame} getGameValues={getGameValues} />
             )
           })}
         </ul>

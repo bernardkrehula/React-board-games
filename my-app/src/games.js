@@ -8,7 +8,8 @@ const games = [
         allowedPlayerAge: '10',
         duration: '60-90',
         difficulty: 'medium',
-        type: 'strategy, trading'
+        type: 'strategy, trading',
+        isEdited: false
     },
     {
         id: '2',
@@ -19,7 +20,8 @@ const games = [
         allowedPlayerAge: '8',
         duration: '30',
         difficulty: 'easy',
-        type: 'party, creative'
+        type: 'party, creative',
+        isEdited: false
     },
     {
         id: '3',
@@ -30,7 +32,8 @@ const games = [
         allowedPlayerAge: '8',
         duration: '30-45',
         difficulty: 'medium',
-        type: 'abstract, strategy'
+        type: 'abstract, strategy',
+        isEdited: false
     },
     {
         id: '4',
@@ -41,7 +44,8 @@ const games = [
         allowedPlayerAge: '8',
         duration: '45-60',
         difficulty: 'easy',
-        type: 'strategy, familiy'
+        type: 'strategy, familiy',
+        isEdited: false
     },
     {
         id: '5',
@@ -52,7 +56,8 @@ const games = [
         allowedPlayerAge: '10',
         duration: '15-30',
         difficulty: 'easy',
-        type: 'strategy, creative'
+        type: 'strategy, creative',
+        isEdited: false
     }
 ]
 

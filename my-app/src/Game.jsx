@@ -21,9 +21,10 @@ const SingleGame = ({game, displayAddNewGame, getGameValues }) => {
             <>{stars}</>
           )  
     }
-    const handleClick = (e) => {
+    const handleClick = () => {
       const newGame = {id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type}; 
-      getGameValues(newGame)
+      getGameValues(newGame);
+      displayAddNewGame();
     }
 
     return(
@@ -53,10 +54,7 @@ const SingleGame = ({game, displayAddNewGame, getGameValues }) => {
               <span >{type}</span>
             </div>
             <Btn variation='learn-more'>Learn More</Btn>
-            <Btn variation='edit' type='submit' onClick={() => {
-              displayAddNewGame()
-              handleClick()
-              }}>Edit</Btn>
+            <Btn variation='edit' type='submit' onClick={() => {handleClick()}}>Edit</Btn>
           </li>
         </>
     )

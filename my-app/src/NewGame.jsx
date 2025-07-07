@@ -3,7 +3,7 @@ import Btn from './Btn';
 import './Btn.css'
 import { useState } from 'react';
 
-const NewGame = ({isFormActive, addNewGame, displayAddNewGame}) => {
+const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getGameValues}) => {
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -18,8 +18,9 @@ const NewGame = ({isFormActive, addNewGame, displayAddNewGame}) => {
         const type = form.type.value;
         const newGame = {id: crypto.randomUUID(), name, info, rating, players, allowedPlayerAge, duration, difficulty, type};  
         addNewGame(newGame)
+        console.log(getGameValues())
     }
-
+    
     return(
         <>
             <form className="new-game-comp" style={{display: isFormActive ? 'block' : 'none'}} onSubmit={handleSubmit}>
