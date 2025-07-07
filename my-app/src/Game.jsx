@@ -4,7 +4,7 @@ import './Btn.css'
 import NewGame from "./NewGame";
 
 const SingleGame = ({game, displayAddNewGame, getGameValues }) => {
-    const { id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type } = game;
+    const { id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type, isEdited } = game;
 
     const DisplayRating = ({rating}) => {
         const stars = [];
@@ -22,7 +22,7 @@ const SingleGame = ({game, displayAddNewGame, getGameValues }) => {
           )  
     }
     const handleClick = () => {
-      const newGame = {id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type}; 
+      const newGame = {id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type, isEdited: !isEdited}; 
       getGameValues(newGame);
       displayAddNewGame();
     }
