@@ -1,9 +1,10 @@
+import { useState } from "react";
 import Btn from "./Btn";
 import './Btn.css'
+import NewGame from "./NewGame";
 
-const SingleGame = ({game}) => {
+const SingleGame = ({game, displayAddNewGame, getGameValues }) => {
     const { id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type } = game;
-    
 
     const DisplayRating = ({rating}) => {
         const stars = [];
@@ -20,6 +21,11 @@ const SingleGame = ({game}) => {
             <>{stars}</>
           )  
     }
+    const handleClick = (e) => {
+      const newGame = {id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type}; 
+      getGameValues(newGame)
+    }
+
     return(
         <>
           <li className='game' key={id}>
@@ -47,7 +53,10 @@ const SingleGame = ({game}) => {
               <span >{type}</span>
             </div>
             <Btn variation='learn-more'>Learn More</Btn>
-            <Btn variation='edit'>Edit</Btn>
+            <Btn variation='edit' type='submit' onClick={() => {
+              displayAddNewGame()
+              handleClick()
+              }}>Edit</Btn>
           </li>
         </>
     )
