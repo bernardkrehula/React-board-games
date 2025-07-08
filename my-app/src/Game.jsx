@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 import Btn from "./Btn";
 import './Btn.css'
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf'
-
 
 const SingleGame = ({game, displayAddNewGame, getGameValues, setIsEdited }) => {
     const { id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type, isEdited } = game;
-    const printRef = React.useRef(null) 
-
-
+    
     const DisplayRating = ({rating}) => {
         const stars = [];
         for(let i = 0; i < parseInt(rating); i++){
@@ -36,28 +31,9 @@ const SingleGame = ({game, displayAddNewGame, getGameValues, setIsEdited }) => {
       window.open('https://github.com/bernardkrehula');
     }
     
-     const downloadPdf = async() => {
-      const element = printRef.current;
-      if(!element) return;
-      const canvas = await html2canvas(element);
-      const data = canvas.toDataURL('image/png');
-
-      const pdf = new jsPDF({
-        orientation: "portrait",
-        unit: "px",
-        format: 'a4'
-      });
-      const imgProperties = pdf.getImageProperties(data);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-
-      const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-      
-      pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save('examplepdf.pdf');
-    }
     return(
         <>
-          <li ref={printRef} className='game' key={id}>
+          <li className='game' key={id}>
             <h2>{name}</h2>
             <div className="stars">
                 <DisplayRating rating={rating}/>
@@ -82,10 +58,7 @@ const SingleGame = ({game, displayAddNewGame, getGameValues, setIsEdited }) => {
               <span >{type}</span>
             </div>
             <Btn variation='learn-more' onClick={() => {handleLearnMore()}}>Learn More</Btn>
-            <Btn variation='edit' type='submit' onClick={() => {
-              downloadPdf()
-              handleClick()
-              }}>Edit</Btn>
+            <Btn variation='edit' type='submit' onClick={() => {handleClick()}}>Edit</Btn>
           </li>
         </>
     )

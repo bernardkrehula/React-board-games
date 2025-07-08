@@ -1,14 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import React from 'react'
 import './App.css'
 import SingleGame from './Game'
 import Btn from './Btn'
 import games from './games'
 import NewGame from './NewGame'
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf'
 
 function App() {
   const [ getGames, setGames ] = useState(games);
   const [ isFormActive, setActiveFrom ] = useState(false);
-  const [ getValue, setValue ] = useState({})
+  const [ getValue, setValue ] = useState({});
+  const printRef = React.useRef(null);
 
   const addNewGame = (newGame) => {
     if(newGame.isEdited){
@@ -33,6 +37,25 @@ function App() {
   const resetGameValue = () => {
     setValue({})
   }
+  const downloadPdf = async() => {
+      const element = printRef.current;
+      if(!element) return;
+      const canvas = await html2canvas(element);
+      const data = canvas.toDataURL('image/png');
+
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "px",
+        format: 'a4'
+      });
+      const imgProperties = pdf.getImageProperties(data);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+
+      const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+
+      pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('examplepdf.pdf');
+    }
  
 
   return (
@@ -41,9 +64,9 @@ function App() {
         <h1 className='title'>Board games</h1>
         <div className='btns'>
           <Btn variation='new-game' onClick={() => {displayAddNewGame()}}>Add new game</Btn>
-          <Btn variation='save-pdf' >Save as PDF</Btn>
+          <Btn variation='save-pdf' onClick={() => {downloadPdf()}}>Save as PDF</Btn>
         </div>
-        <ul className='games'>
+        <ul className='games'  ref={printRef}>
           {getGames.map(game => {
             return(
                <SingleGame key={game.id} game={game} displayAddNewGame={displayAddNewGame} getGameValues={getGameValues} setIsEdited={setIsEdited} />
