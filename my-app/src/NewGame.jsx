@@ -2,7 +2,7 @@ import './NewGame.css'
 import Btn from './Btn';
 import './Btn.css'
 
-const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue}) => {
+const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue, resetGameValue}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,6 +20,12 @@ const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue}) => {
         const newGame = {id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type, isEdited};  
         addNewGame(newGame)
         displayAddNewGame()
+
+        form.name.value = '';
+        form.info.value = '';
+        form.players.value = '';
+        form.age.value = '';
+        form.duration.value = '';
     } 
     
     return(
