@@ -10,20 +10,15 @@ function App() {
   const [ isFormActive, setActiveFrom ] = useState(false);
   const [ getValue, setValue ] = useState({})
 
-  const setGameId = () => {
-    setGames(prev => prev.map(game => ({...game, id: crypto.randomUUID()})))
-  }
-  useEffect(() => {
-    setGameId();
-  }, []);
-
   const addNewGame = (newGame) => {
-    /* if(newGame.isEdited){
+    if(newGame.isEdited){
       setGames(prev => prev.map(game => game.id === newGame.id ? newGame : game))
+      resetGameValue()
+      console.log('radi')
     }
-    else(
+    else {
       setGames(prev => [...prev, newGame])
-    ) */
+    }
   }
   const displayAddNewGame = () => {
     setActiveFrom(prev => !prev);
@@ -31,6 +26,12 @@ function App() {
   
   const getGameValues = (game) => {
     setValue(game)
+  }
+  const setIsEdited = (id) => {
+    setGames(prev => prev.map(game => game.id === id ? {...game, isEdited: !game.isEdited} : game))
+  }
+  const resetGameValue = () => {
+    setValue({})
   }
   
   return (
@@ -44,7 +45,7 @@ function App() {
         <ul className='games'>
           {getGames.map(game => {
             return(
-               <SingleGame key={game.id} game={game} displayAddNewGame={displayAddNewGame} getGameValues={getGameValues} />
+               <SingleGame key={game.id} game={game} displayAddNewGame={displayAddNewGame} getGameValues={getGameValues} setIsEdited={setIsEdited}/>
             )
           })}
         </ul>

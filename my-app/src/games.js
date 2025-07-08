@@ -59,7 +59,7 @@ const games = [
         type: 'strategy, creative',
         isEdited: false
     }
-]
+].map(game => ({ ...game, id: crypto.randomUUID() }));
 
 export default games;
 

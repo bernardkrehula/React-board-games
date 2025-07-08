@@ -1,13 +1,13 @@
 import './NewGame.css'
 import Btn from './Btn';
 import './Btn.css'
-import { useState } from 'react';
 
 const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
+        const id = form.id; 
         const name = form.name.value;
         const info = form.info.value;
         const rating = form.rating.value;
@@ -16,27 +16,28 @@ const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue}) => {
         const duration = form.duration.value;
         const difficulty = form.difficulty.value;
         const type = form.type.value;
-        const isEdited = false;
-        const newGame = {id: crypto.randomUUID(), name, info, rating, players, allowedPlayerAge, duration, difficulty, type, isEdited};  
+        const isEdited = getValue.isEdited;
+        const newGame = {id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type, isEdited};  
         addNewGame(newGame)
-    }
+        displayAddNewGame()
+    } 
     
     return(
         <>
-        {getValue.isEdited ? <form className="new-game-comp" style={{display: isFormActive ? 'block' : 'none'}} onSubmit={handleSubmit}>
+        {getValue.isEdited ? <form id={getValue.id} className="new-game-comp" style={{display: isFormActive ? 'block' : 'none'}} onSubmit={handleSubmit}>
                 <h1>Set games rules</h1>
                     <ul>
                         <li>
                             <h2>Name</h2>
-                            <input type="text" name='name' value={getValue.name}/>
+                            <input type="text" name='name' defaultValue={getValue.name}/>
                         </li>
                         <li>
                             <h2>Info</h2>
-                            <input type="text" name='info' value={getValue.info}/>
+                            <input type="text" name='info' defaultValue={getValue.info}/>
                         </li>
                         <li>
                             <h2>Rating</h2>
-                            <select name="rating" id="" value={getValue.rating}>
+                            <select name="rating" id="" defaultValue={getValue.rating}>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -46,19 +47,19 @@ const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue}) => {
                         </li>
                         <li>
                             <h2>Players</h2>
-                            <input type="text" name='players' value={getValue.players}/>
+                            <input type="text" name='players' defaultValue={getValue.players}/>
                         </li>
                         <li>
                             <h2>Allowed age</h2>
-                            <input type="number" name='age' value={getValue.allowedPlayerAge}/>       
+                            <input type="number" name='age' defaultValue={getValue.allowedPlayerAge}/>       
                         </li>
                         <li>
                             <h2>Duration</h2>
-                            <input type="text" name='duration' value={getValue.duration}/>
+                            <input type="text" name='duration' defaultValue={getValue.duration}/>
                         </li>
                         <li>
                             <h2>Difficulty</h2>
-                            <select name="difficulty" id="" value={getValue.difficulty}>
+                            <select name="difficulty" id="" defaultValue={getValue.difficulty}>
                                 <option value="Easy">Easy</option>
                                 <option value="Medium">Medium</option>
                                 <option value="Hard">Hard</option>
@@ -66,7 +67,7 @@ const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue}) => {
                         </li>
                         <li>
                             <h2>Type</h2>
-                            <select name="type" id="" value={getValue.type}>
+                            <select name="type" id="" defaultValue={getValue.type}>
                                 <option value="Strategy">Strategy</option>
                                 <option value="Trading">Trading</option>
                                 <option value="Party">Party</option>
@@ -76,7 +77,7 @@ const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue}) => {
                             </select>
                         </li>
                     </ul>
-                    <Btn variation='add-btn' onClick={() => {displayAddNewGame()}}>{getValue.isEdited ? 'Save' : 'Add'}</Btn>
+                    <Btn variation='add-btn' type='submit'>{getValue.isEdited ? 'Save' : 'Add'}</Btn>
             </form> 
             : 
             <form className="new-game-comp" style={{display: isFormActive ? 'block' : 'none'}} onSubmit={handleSubmit}>
@@ -132,7 +133,7 @@ const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue}) => {
                             </select>
                         </li>
                     </ul>
-                    <Btn variation='add-btn' onClick={() => {displayAddNewGame()}}>{getValue.isEdited ? 'Save' : 'Add'}</Btn>
+                    <Btn variation='add-btn' type='submit'>{getValue.isEdited ? 'Save' : 'Add'}</Btn>
             </form>}
         </>
     )
