@@ -33,19 +33,20 @@ function App() {
   const resetGameValue = () => {
     setValue({})
   }
-  
+ 
+
   return (
     <>
       <div className='main'>
         <h1 className='title'>Board games</h1>
         <div className='btns'>
           <Btn variation='new-game' onClick={() => {displayAddNewGame()}}>Add new game</Btn>
-          <Btn variation='save-pdf'>Save as PDF</Btn>
+          <Btn variation='save-pdf' >Save as PDF</Btn>
         </div>
         <ul className='games'>
           {getGames.map(game => {
             return(
-               <SingleGame key={game.id} game={game} displayAddNewGame={displayAddNewGame} getGameValues={getGameValues} setIsEdited={setIsEdited}/>
+               <SingleGame key={game.id} game={game} displayAddNewGame={displayAddNewGame} getGameValues={getGameValues} setIsEdited={setIsEdited} />
             )
           })}
         </ul>
