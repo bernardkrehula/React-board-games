@@ -106,6 +106,7 @@ body {
 .btns {
     display: flex;
     justify-content: space-between;
-    width: 820px;
+    width: 800px;
     margin: 50px auto;
+
 }

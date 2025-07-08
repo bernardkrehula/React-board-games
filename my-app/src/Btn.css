@@ -23,3 +23,7 @@
     font-size: 1.2rem;
     float: right;
 }
+.save-pdf {
+    margin-left: auto;
+    margin-right: -20px;
+}
