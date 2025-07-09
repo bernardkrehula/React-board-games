@@ -1,8 +1,8 @@
-import './NewGame.css'
+import './EditForm.css'
 import Btn from './Btn';
 import './Btn.css'
 
-const createEditForm = ({isFormActive, addNewGame, displayAddNewGame, getValue }) => {
+const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, getValue, isEdited }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -146,4 +146,4 @@ const createEditForm = ({isFormActive, addNewGame, displayAddNewGame, getValue }
     
 }
 
-export default createEditForm;
+export default CreateEditForm;

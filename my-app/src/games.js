@@ -9,7 +9,7 @@ const games = [
         duration: '60-90',
         difficulty: 'medium',
         type: 'strategy, trading',
-        isEdited: false
+        isEdited: true
     },
     {
         id: '2',
@@ -21,7 +21,7 @@ const games = [
         duration: '30',
         difficulty: 'easy',
         type: 'party, creative',
-        isEdited: false
+        isEdited: true
     },
     {
         id: '3',
@@ -33,7 +33,7 @@ const games = [
         duration: '30-45',
         difficulty: 'medium',
         type: 'abstract, strategy',
-        isEdited: false
+        isEdited: true
     },
     {
         id: '4',
@@ -45,7 +45,7 @@ const games = [
         duration: '45-60',
         difficulty: 'easy',
         type: 'strategy, familiy',
-        isEdited: false
+        isEdited: true
     },
     {
         id: '5',
@@ -57,7 +57,7 @@ const games = [
         duration: '15-30',
         difficulty: 'easy',
         type: 'strategy, creative',
-        isEdited: false
+        isEdited: true
     }
 ].map(game => ({ ...game, id: crypto.randomUUID() }));
 
