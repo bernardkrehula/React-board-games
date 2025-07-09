@@ -17,8 +17,6 @@ function App() {
   const addNewGame = (newGame) => {
     if(newGame.isEdited){
       setGames(prev => prev.map(game => game.id === newGame.id ? newGame : game))
-      resetGameValue()
-      console.log('radi')
     }
     else {
       setGames(prev => [...prev, newGame])
@@ -34,9 +32,7 @@ function App() {
   const setIsEdited = (id) => {
     setGames(prev => prev.map(game => game.id === id ? {...game, isEdited: !game.isEdited} : game))
   }
-  const resetGameValue = () => {
-    setValue({})
-  }
+
   const downloadPdf = async() => {
       const element = printRef.current;
       if(!element) return;
@@ -63,8 +59,8 @@ function App() {
       <div className='main'>
         <h1 className='title'>Board games</h1>
         <div className='btns'>
-          <Btn variation='new-game' onClick={() => {displayAddNewGame()}}>Add new game</Btn>
-          <Btn variation='save-pdf' onClick={() => {downloadPdf()}}>Save as PDF</Btn>
+          <Btn variation='primary' onClick={() => {displayAddNewGame()}}>Add new game</Btn>
+          <Btn variation='primary' margin='margin' onClick={() => {downloadPdf()}}>Save as PDF</Btn>
         </div>
         <ul className='games'  ref={printRef}>
           {getGames.map(game => {
@@ -73,10 +69,21 @@ function App() {
             )
           })}
         </ul>
+        //Neka se ovo zove createEditForm 
         <NewGame isFormActive={isFormActive} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame} getValue={getValue}/>
       </div>
     </>
   )
 }
+//createEditForma treba da se iskoristi i za pravljenje nove igrice i editovanje postojece
+//Kako ce ona da zna da li treba da edituje ili da napravi novu igricu ?
+//U create edit formu treba da napravis state za svako polje 
+//Ako forma nije editing sva polja su prazna i znaci da pravis novu igricu
+//
+//Forma ce znat da je editing ukoliko primi igricu kao prop
+//Kako ce forma da primi igricu kao prop?
+//U single game napravi state isEditing 
+//Na klik dugmeta edit otvori createEditForm i proslijedis joj igricu 
+//Posto je sad forma primila igricu kao prop ona zna da je editing (sacuvati u const)
 
 export default App

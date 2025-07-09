@@ -2,7 +2,7 @@ import './NewGame.css'
 import Btn from './Btn';
 import './Btn.css'
 
-const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue, resetGameValue}) => {
+const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -83,7 +83,7 @@ const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue, resetGa
                             </select>
                         </li>
                     </ul>
-                    <Btn variation='add-btn' type='submit'>{getValue.isEdited ? 'Save' : 'Add'}</Btn>
+                    <Btn variation='primary' marginTop='marginTop' type='submit'>{getValue.isEdited ? 'Save' : 'Add'}</Btn>
             </form> 
             : 
             <form className="new-game-comp" style={{display: isFormActive ? 'block' : 'none'}} onSubmit={handleSubmit}>
@@ -139,7 +139,7 @@ const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue, resetGa
                             </select>
                         </li>
                     </ul>
-                    <Btn variation='add-btn' type='submit'>{getValue.isEdited ? 'Save' : 'Add'}</Btn>
+                    <Btn variation='primary' marginTop='marginTop' type='submit'>{getValue.isEdited ? 'Save' : 'Add'}</Btn>
             </form>}
         </>
     )
