@@ -2,7 +2,7 @@ import './NewGame.css'
 import Btn from './Btn';
 import './Btn.css'
 
-const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue }) => {
+const createEditForm = ({isFormActive, addNewGame, displayAddNewGame, getValue }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -146,4 +146,4 @@ const NewGame = ({isFormActive, addNewGame, displayAddNewGame, getValue }) => {
     
 }
 
-export default NewGame;
+export default createEditForm;

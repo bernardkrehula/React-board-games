@@ -4,7 +4,7 @@ import './App.css'
 import SingleGame from './Game'
 import Btn from './Btn'
 import games from './games'
-import NewGame from './NewGame'
+import createEditForm from './NewGame'
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf'
 
@@ -70,7 +70,8 @@ function App() {
           })}
         </ul>
         //Neka se ovo zove createEditForm 
-        <NewGame isFormActive={isFormActive} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame} getValue={getValue}/>
+        <createEditForm isFormActive={isFormActive} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame} getValue={getValue}/>
+        {/* <NewGame isFormActive={isFormActive} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame} getValue={getValue}/> */}
       </div>
     </>
   )
