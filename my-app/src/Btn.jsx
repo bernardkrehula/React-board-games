@@ -1,5 +1,6 @@
 import './Btn.css'
-//Popraviti variation i size a ne preko klase 
+//Popraviti variation i size a ne preko klase
+ 
 const Btn = ({onClick, variation, size, margin, marginTop, children}) => {
 
     return(
