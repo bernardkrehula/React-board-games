@@ -3,13 +3,13 @@ import React from 'react'
 import './App.css'
 import SingleGame from './Game'
 import Btn from './Btn'
-import games from './games'
+import gamesData from './gamesData'
 import CreateEditForm from './EditForm'
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf'
 
 function App() {
-  const [ getGames, setGames ] = useState(games);
+  const [ getGames, setGames ] = useState(gamesData);
   const [ isFormActive, setActiveFrom ] = useState(false);
   const [ getValue, setValue ] = useState({});
   const printRef = React.useRef(null);
@@ -71,7 +71,6 @@ function App() {
         </ul>
         //Neka se ovo zove createEditForm 
         <CreateEditForm isFormActive={isFormActive} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame} getValue={getValue}/>
-        {/* <NewGame isFormActive={isFormActive} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame} getValue={getValue}/> */}
       </div>
     </>
   )

@@ -1,4 +1,4 @@
-const games = [
+const gamesData = [
     {
         id: '1',
         name: 'Catan',
@@ -9,7 +9,7 @@ const games = [
         duration: '60-90',
         difficulty: 'medium',
         type: 'strategy, trading',
-        isEdited: true
+        isEdited: false
     },
     {
         id: '2',
@@ -21,7 +21,7 @@ const games = [
         duration: '30',
         difficulty: 'easy',
         type: 'party, creative',
-        isEdited: true
+        isEdited: false
     },
     {
         id: '3',
@@ -33,7 +33,7 @@ const games = [
         duration: '30-45',
         difficulty: 'medium',
         type: 'abstract, strategy',
-        isEdited: true
+        isEdited: false
     },
     {
         id: '4',
@@ -45,7 +45,7 @@ const games = [
         duration: '45-60',
         difficulty: 'easy',
         type: 'strategy, familiy',
-        isEdited: true
+        isEdited: false
     },
     {
         id: '5',
@@ -57,9 +57,9 @@ const games = [
         duration: '15-30',
         difficulty: 'easy',
         type: 'strategy, creative',
-        isEdited: true
+        isEdited: false
     }
 ].map(game => ({ ...game, id: crypto.randomUUID() }));
 
-export default games;
+export default gamesData;
 

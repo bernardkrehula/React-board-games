@@ -29,6 +29,7 @@ const SingleGame = ({game, displayAddNewGame, getGameValues, setIsEdited }) => {
       /* const newGame = {id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type, isEdited: true};
       getGameValues(newGame); */
       displayAddNewGame();
+      setIsEditing(prev => !prev)
     }
     const handleLearnMore = () => {
       window.open('https://github.com/bernardkrehula');
