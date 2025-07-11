@@ -4,7 +4,7 @@ import './Btn.css'
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const CreateEditForm = ({isFormActive, addNewGame, game }) => {
+const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) => {
     const value = game;
 
     const [ form, setForm ] = useState({
@@ -26,9 +26,9 @@ const CreateEditForm = ({isFormActive, addNewGame, game }) => {
             name: game.name,
             info: game.info,
             rating: game.rating,
-            players: game.players,
+            players: parseInt(game.players),
             allowedPlayerAge: game.allowedPlayerAge,
-            duration: game.duration,
+            duration: parseInt(game.duration),
             difficulty: game.difficulty,
             type: game.type,
             isEdited: true,
@@ -62,7 +62,19 @@ const CreateEditForm = ({isFormActive, addNewGame, game }) => {
             : { ...form, id: Date.now(), isEdited: false };
 
         addNewGame(newGame);
+        emptyForm(e);
     };
+    const emptyForm = (e) => {
+        const form = e.target;
+        form.name.value = ''
+        form.info.value = ''
+        form.rating.value = ''
+        form.players.value = ''
+        form.allowedPlayerAge.value = ''
+        form.duration.value = ''
+        form.difficulty.value = ''
+        form.type.value = ''
+    }
     return(
         <>
             <form className="new-game-comp" style={{display: isFormActive ? 'block' : 'none'}} onSubmit={handleSubmit}>
@@ -118,7 +130,7 @@ const CreateEditForm = ({isFormActive, addNewGame, game }) => {
                             </select>
                         </li>
                     </ul>
-                    <Btn variation='primary' marginTop='marginTop' type='submit'>Add</Btn>
+                    <Btn variation='primary' marginTop='marginTop' type='submit' onClick={() => displayAddNewGame()}>Add</Btn>
             </form>
         </>
     )

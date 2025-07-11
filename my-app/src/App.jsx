@@ -31,7 +31,7 @@ function App() {
   }
   const getGameValues = (game) => {
     setSelectedGame(game);       // Set selected game
-    setActiveFrom(prev => !prev);         // Otvori formu
+    setActiveFrom(true);         // Otvori formu
   };
 
   const downloadPdf = async() => {
@@ -71,7 +71,7 @@ function App() {
           })}
         </ul>
         //Neka se ovo zove createEditForm 
-        <CreateEditForm isFormActive={isFormActive} game={selectedGame}/>
+        <CreateEditForm isFormActive={isFormActive} game={selectedGame} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame}/>
       </div>
     </>
   )

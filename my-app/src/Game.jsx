@@ -26,8 +26,8 @@ const SingleGame = ({game, displayAddNewGame, getGameValues, setIsEdited, handle
      
     const handleClick = () => {
         setIsEditing(prev => !prev)
-        getGameValues(game);
         displayAddNewGame();
+        getGameValues(game);
     }
     const handleLearnMore = () => {
       window.open('https://github.com/bernardkrehula');
