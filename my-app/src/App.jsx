@@ -11,7 +11,7 @@ import jsPDF from 'jspdf'
 function App() {
   const [ getGames, setGames ] = useState(gamesData);
   const [ isFormActive, setActiveFrom ] = useState(false);
-  const [ getValue, setValue ] = useState({});
+  const [ selectedGame, setSelectedGame ] = useState(null);
   const printRef = React.useRef(null);
 
   const addNewGame = (newGame) => {
@@ -65,12 +65,12 @@ function App() {
         <ul className='games'  ref={printRef}>
           {getGames.map(game => {
             return(
-               <SingleGame key={game.id} game={game} displayAddNewGame={displayAddNewGame} getGameValues={getGameValues} setIsEdited={setIsEdited} />
+               <SingleGame key={game.id} game={game} displayAddNewGame={displayAddNewGame} getGameValues={getGameValues} setIsEdited={setIsEdited}/>
             )
           })}
         </ul>
         //Neka se ovo zove createEditForm 
-        <CreateEditForm isFormActive={isFormActive} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame} getValue={getValue}/>
+        <CreateEditForm isFormActive={isFormActive} addNewGame={addNewGame} selectedGame={selectedGame}/>
       </div>
     </>
   )
