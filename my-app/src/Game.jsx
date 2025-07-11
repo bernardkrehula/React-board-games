@@ -25,7 +25,9 @@ const SingleGame = ({game, displayAddNewGame, getGameValues, setIsEdited, handle
     }
      
     const handleClick = () => {
-      setIsEditing(prev => !prev)
+        setIsEditing(prev => !prev)
+        getGameValues(game);
+        displayAddNewGame();
     }
     const handleLearnMore = () => {
       window.open('https://github.com/bernardkrehula');

@@ -26,12 +26,13 @@ function App() {
     setActiveFrom(prev => !prev);
   }
   
-  const getGameValues = (game) => {
-    setValue(game)
-  }
   const setIsEdited = (id) => {
     setGames(prev => prev.map(game => game.id === id ? {...game, isEdited: !game.isEdited} : game))
   }
+  const getGameValues = (game) => {
+    setSelectedGame(game);       // Set selected game
+    setActiveFrom(prev => !prev);         // Otvori formu
+  };
 
   const downloadPdf = async() => {
       const element = printRef.current;
@@ -70,7 +71,7 @@ function App() {
           })}
         </ul>
         //Neka se ovo zove createEditForm 
-        <CreateEditForm isFormActive={isFormActive} addNewGame={addNewGame} selectedGame={selectedGame}/>
+        <CreateEditForm isFormActive={isFormActive} game={selectedGame}/>
       </div>
     </>
   )
