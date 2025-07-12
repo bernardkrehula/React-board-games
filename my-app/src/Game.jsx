@@ -6,8 +6,6 @@ import CreateEditForm from "./EditForm";
 const SingleGame = ({game, displayAddNewGame, getGameValues, setIsEdited, handleEditBtn }) => {
     const { id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type, isEdited } = game;
     
-    const [ isEditing, setIsEditing ] = useState(false);
-  
     const DisplayRating = ({rating}) => {
         const stars = [];
         for(let i = 0; i < parseInt(rating); i++){

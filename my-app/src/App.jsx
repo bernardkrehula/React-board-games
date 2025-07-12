@@ -27,14 +27,6 @@ function App() {
     setSelectedGame(game)
   }
   
-  /* const setIsEdited = (id) => {
-    setGames(prev => prev.map(game => game.id === id ? {...game, isEdited: !game.isEdited} : game))
-  } */
-  /* const getGameValues = (game) => {
-    setSelectedGame(game);      
-    setActiveFrom(prev => !prev);         
-  }; */
-
   const downloadPdf = async() => {
       const element = printRef.current;
       if(!element) return;
