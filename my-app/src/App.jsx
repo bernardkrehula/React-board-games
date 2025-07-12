@@ -24,14 +24,15 @@ function App() {
   }
   const displayAddNewGame = () => {
     setActiveFrom(prev => !prev);
+    setSelectedGame(null)
   }
   
   const setIsEdited = (id) => {
     setGames(prev => prev.map(game => game.id === id ? {...game, isEdited: !game.isEdited} : game))
   }
   const getGameValues = (game) => {
-    setSelectedGame(game);       // Set selected game
-    setActiveFrom(true);         // Otvori formu
+    setSelectedGame(game);      
+    setActiveFrom(true);         
   };
 
   const downloadPdf = async() => {
@@ -70,7 +71,6 @@ function App() {
             )
           })}
         </ul>
-        //Neka se ovo zove createEditForm 
         <CreateEditForm isFormActive={isFormActive} game={selectedGame} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame}/>
       </div>
     </>
@@ -87,4 +87,4 @@ function App() {
 //Na klik dugmeta edit otvori createEditForm i proslijedis joj igricu 
 //Posto je sad forma primila igricu kao prop ona zna da je editing (sacuvati u const)
 
-export default App
+export default App;

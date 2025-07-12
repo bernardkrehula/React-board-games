@@ -5,7 +5,6 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) => {
-    const value = game;
 
     const [ form, setForm ] = useState({
         name: '',
@@ -50,31 +49,21 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
     }, [game]);
 
     const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm(prev => ({ ...prev, [name]: value }));
+        const { name, value } = e.target;
+        setForm(prev => ({ ...prev, [name]: value }));
     };
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
+
         if (!form.name || !form.info) return alert("Name and Info are required");
         const newGame = form.isEdited
             ? { ...form }
             : { ...form, id: Date.now(), isEdited: false };
-
-        addNewGame(newGame);
-        emptyForm(e);
+        console.log(newGame)
+        addNewGame(newGame)
     };
-    const emptyForm = (e) => {
-        const form = e.target;
-        form.name.value = ''
-        form.info.value = ''
-        form.rating.value = ''
-        form.players.value = ''
-        form.allowedPlayerAge.value = ''
-        form.duration.value = ''
-        form.difficulty.value = ''
-        form.type.value = ''
-    }
+
     return(
         <>
             <form className="new-game-comp" style={{display: isFormActive ? 'block' : 'none'}} onSubmit={handleSubmit}>
@@ -130,7 +119,7 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
                             </select>
                         </li>
                     </ul>
-                    <Btn variation='primary' marginTop='marginTop' type='submit' onClick={() => displayAddNewGame()}>Add</Btn>
+                    <Btn variation='primary' marginTop='marginTop' type='submit' onClick={() => {displayAddNewGame()}}>Add</Btn>
             </form>
         </>
     )

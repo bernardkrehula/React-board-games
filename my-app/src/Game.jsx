@@ -25,7 +25,7 @@ const SingleGame = ({game, displayAddNewGame, getGameValues, setIsEdited, handle
     }
      
     const handleClick = () => {
-        setIsEditing(prev => !prev)
+        setIsEditing(true)
         displayAddNewGame();
         getGameValues(game);
     }
