@@ -4,8 +4,8 @@ import './Btn.css'
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) => {
-
+const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, selectedGame }) => {
+    
     const [ form, setForm ] = useState({
         name: '',
         info: '',
@@ -20,18 +20,18 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
     )
   
     useEffect(() => {
-        if (game) {
+        if (selectedGame) {
         setForm({
-            name: game.name,
-            info: game.info,
-            rating: game.rating,
-            players: parseInt(game.players),
-            allowedPlayerAge: game.allowedPlayerAge,
-            duration: parseInt(game.duration),
-            difficulty: game.difficulty,
-            type: game.type,
+            name: selectedGame.name,
+            info: selectedGame.info,
+            rating: selectedGame.rating,
+            players: parseInt(selectedGame.players),
+            allowedPlayerAge: selectedGame.allowedPlayerAge,
+            duration: parseInt(selectedGame.duration),
+            difficulty: selectedGame.difficulty,
+            type: selectedGame.type,
             isEdited: true,
-            id: game.id
+            id: selectedGame.id
         });
         } else {
         setForm({
@@ -46,7 +46,7 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
             isEdited: false
         });
         }
-    }, [game]);
+    }, [selectedGame, isFormActive]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -56,11 +56,8 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (!form.name || !form.info) return alert("Name and Info are required");
-        const newGame = form.isEdited
-            ? { ...form }
-            : { ...form, id: Date.now(), isEdited: false };
-        console.log(newGame)
+        if (!form.name || !form.info) return alert("Name and Info required");
+        const newGame = form.isEdited ? { ...form } : { ...form, id: Date.now(), isEdited: false };
         addNewGame(newGame)
     };
 
@@ -123,7 +120,6 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
             </form>
         </>
     )
-    
 }
 
 export default CreateEditForm;

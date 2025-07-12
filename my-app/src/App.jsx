@@ -22,18 +22,18 @@ function App() {
       setGames(prev => [...prev, newGame])
     }
   }
-  const displayAddNewGame = () => {
+  const displayAddNewGame = (game) => {
     setActiveFrom(prev => !prev);
-    setSelectedGame(null)
+    setSelectedGame(game)
   }
   
-  const setIsEdited = (id) => {
+  /* const setIsEdited = (id) => {
     setGames(prev => prev.map(game => game.id === id ? {...game, isEdited: !game.isEdited} : game))
-  }
-  const getGameValues = (game) => {
+  } */
+  /* const getGameValues = (game) => {
     setSelectedGame(game);      
-    setActiveFrom(true);         
-  };
+    setActiveFrom(prev => !prev);         
+  }; */
 
   const downloadPdf = async() => {
       const element = printRef.current;
@@ -67,11 +67,11 @@ function App() {
         <ul className='games'  ref={printRef}>
           {getGames.map(game => {
             return(
-               <SingleGame key={game.id} game={game} displayAddNewGame={displayAddNewGame} getGameValues={getGameValues} setIsEdited={setIsEdited}/>
+               <SingleGame key={game.id} game={game} displayAddNewGame={displayAddNewGame}/>
             )
           })}
         </ul>
-        <CreateEditForm isFormActive={isFormActive} game={selectedGame} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame}/>
+        <CreateEditForm isFormActive={isFormActive} selectedGame={selectedGame} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame}/>
       </div>
     </>
   )
