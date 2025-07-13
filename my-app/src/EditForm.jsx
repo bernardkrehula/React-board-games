@@ -36,10 +36,8 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
         isEdited: false 
     }
     )
-    if(isFormActive){
-         console.log(form)
-    }
-    console.log(form)
+   
+
   
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -57,9 +55,9 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
         e.preventDefault();
         game ? setForm(...game) : form;
         addNewGame(form)
-        console.log(form)
     };
-
+    console.log(isFormActive)
+    /* console.log(form) */
     return(
         <>
             <form className="new-game-comp" style={{display: isFormActive ? 'block' : 'none'}} onSubmit={handleSubmit}>

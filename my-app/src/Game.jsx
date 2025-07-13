@@ -25,7 +25,6 @@ const SingleGame = ({game, displayAddNewGame, getGameValues, setIsEdited, handle
      
     const handleClick = () => {
         setIsEditing(prev => !prev)
-        displayAddNewGame();
     }
     const handleLearnMore = () => {
       window.open('https://github.com/bernardkrehula');
@@ -59,7 +58,7 @@ const SingleGame = ({game, displayAddNewGame, getGameValues, setIsEdited, handle
             </div>
             <Btn variation='transparent' onClick={() => {handleLearnMore()}}>Learn More</Btn>
             <Btn name='edit-btn' variation='primary' size='size' type='submit' onClick={() => {handleClick()}}>Edit</Btn>
-            {isEditing && <CreateEditForm game={game} isEditing={isEditing}/>}
+            {isEditing && <CreateEditForm game={game} isFormActive={true}/>}
           </li>
         </>
     )
