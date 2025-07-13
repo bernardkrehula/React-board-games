@@ -4,9 +4,27 @@ import './Btn.css'
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, selectedGame }) => {
-    
-    const [ form, setForm ] = useState({
+const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) => {
+    const isEditingSession = game;
+    //Ako sam primio selectedGame znam da je editingSession 
+    //Sacuvaj to u neku const i postavi terinary state 
+    //tj ako isEditingSession state neka bude iniciran propom selected game u suprotnom prazan 
+  
+    const [ form, setForm ] = useState(isEditingSession ? 
+        {
+            name: game.name,
+            info: game.info,
+            rating: game.rating,
+            players: parseInt(game.players),
+            allowedPlayerAge: game.allowedPlayerAge,
+            duration: parseInt(game.duration),
+            difficulty: game.difficulty,
+            type: game.type,
+            isEdited: true,
+            id: game.id
+        }
+        :
+        {
         name: '',
         info: '',
         rating: '1',
@@ -18,47 +36,28 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, selectedGa
         isEdited: false 
     }
     )
+    if(isFormActive){
+         console.log(form)
+    }
+    console.log(form)
   
-    useEffect(() => {
-        if (selectedGame) {
-        setForm({
-            name: selectedGame.name,
-            info: selectedGame.info,
-            rating: selectedGame.rating,
-            players: parseInt(selectedGame.players),
-            allowedPlayerAge: selectedGame.allowedPlayerAge,
-            duration: parseInt(selectedGame.duration),
-            difficulty: selectedGame.difficulty,
-            type: selectedGame.type,
-            isEdited: true,
-            id: selectedGame.id
-        });
-        } else {
-        setForm({
-            name: '',
-            info: '',
-            rating: '1',
-            players: '',
-            allowedPlayerAge: '',
-            duration: '',
-            difficulty: 'Easy',
-            type: 'Strategy',
-            isEdited: false
-        });
-        }
-    }, [selectedGame, isFormActive]);
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setForm(prev => ({ ...prev, [name]: value }));
     };
-    
+    //2 nacina da se ovo rijesi 
+    //1 nacin da forma primi samo handleSubmit funkciju
+    //Parenti treba da proslijede tu funckiju do forme 
+    //U app.jsx proslijedis createGame kao handleSubmit a iz singleGame editGame
+    //2 nacin je da se oslonis na ovu const isEditingSession 
+    //U handleSubmit koji definiras direktno u formu napravis if else 
+    //Ako je isEditingSession pozoves editForm ako nije createForm 
+
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        if (!form.name || !form.info) return alert("Name and Info required");
-        const newGame = form.isEdited ? { ...form } : { ...form, id: Date.now(), isEdited: false };
-        addNewGame(newGame)
+        game ? setForm(...game) : form;
+        addNewGame(form)
+        console.log(form)
     };
 
     return(

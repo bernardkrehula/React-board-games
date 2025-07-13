@@ -22,9 +22,8 @@ function App() {
       setGames(prev => [...prev, newGame])
     }
   }
-  const displayAddNewGame = (game) => {
+  const displayAddNewGame = () => {
     setActiveFrom(prev => !prev);
-    setSelectedGame(game)
   }
   
   const downloadPdf = async() => {
@@ -63,7 +62,7 @@ function App() {
             )
           })}
         </ul>
-        <CreateEditForm isFormActive={isFormActive} selectedGame={selectedGame} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame}/>
+        <CreateEditForm isFormActive={isFormActive} addNewGame={addNewGame} displayAddNewGame={displayAddNewGame}/>
       </div>
     </>
   )
