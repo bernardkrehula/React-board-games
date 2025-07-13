@@ -25,19 +25,17 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
         }
         :
         {
-        name: '',
-        info: '',
-        rating: '1',
-        players: '',
-        allowedPlayerAge: '',
-        duration: '',
-        difficulty: 'Easy',
-        type: 'Strategy',
-        isEdited: false 
+            name: '',
+            info: '',
+            rating: '1',
+            players: '',
+            allowedPlayerAge: '',
+            duration: '',
+            difficulty: 'Easy',
+            type: 'Strategy',
+            isEdited: false 
     }
     )
-   
-
   
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -53,14 +51,14 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        game ? setForm(...game) : form;
+
         addNewGame(form)
+        isFormActive ? displayAddNewGame() : setForm(prev => ({...prev, isEdited: !prev.isEdited}))
     };
-    console.log(isFormActive)
-    /* console.log(form) */
+    console.log(form.isEdited) 
     return(
         <>
-            <form className="new-game-comp" style={{display: isFormActive ? 'block' : 'none'}} onSubmit={handleSubmit}>
+            <form className="new-game-comp" style={{display: isFormActive || form.isEdited ? 'block' : 'none'}} onSubmit={handleSubmit}>
                 <h1>Set games rules</h1>
                     <ul>
                         <li>
@@ -113,7 +111,7 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
                             </select>
                         </li>
                     </ul>
-                    <Btn variation='primary' marginTop='marginTop' type='submit' onClick={() => {displayAddNewGame()}}>Add</Btn>
+                    <Btn variation='primary' marginTop='marginTop' type='submit' onClick={() => {}}>Add</Btn>
             </form>
         </>
     )

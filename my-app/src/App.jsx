@@ -25,7 +25,7 @@ function App() {
   const displayAddNewGame = () => {
     setActiveFrom(prev => !prev);
   }
-  
+ 
   const downloadPdf = async() => {
       const element = printRef.current;
       if(!element) return;
@@ -58,7 +58,7 @@ function App() {
         <ul className='games'  ref={printRef}>
           {getGames.map(game => {
             return(
-               <SingleGame key={game.id} game={game} displayAddNewGame={displayAddNewGame}/>
+               <SingleGame key={game.id} isFormActive={isFormActive} game={game} displayAddNewGame={displayAddNewGame} addNewGame={addNewGame}/>
             )
           })}
         </ul>
