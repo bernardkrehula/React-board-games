@@ -3,8 +3,8 @@ import Btn from "./Btn";
 import './Btn.css'
 import CreateEditForm from "./EditForm";
 
-const SingleGame = ({ game, displayAddNewGame, addNewGame }) => {
-    const { id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type, isEdited } = game;
+const SingleGame = ({ game, displayAddNewGame, addNewGame, editGame }) => {
+    const { id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type } = game;
     
     const [ isEditing, setIsEditing ] = useState(false);
 
@@ -26,7 +26,6 @@ const SingleGame = ({ game, displayAddNewGame, addNewGame }) => {
      
     const handleClick = () => {
       setIsEditing(prev => !prev)
-      console.log(game)
     }
     const handleLearnMore = () => {
       window.open('https://github.com/bernardkrehula');
@@ -60,7 +59,7 @@ const SingleGame = ({ game, displayAddNewGame, addNewGame }) => {
             </div>
             <Btn variation='transparent' onClick={() => {handleLearnMore()}}>Learn More</Btn>
             <Btn name='edit-btn' variation='primary' size='size' type='submit' onClick={() => {handleClick()}}>Edit</Btn>
-            {isEditing && <CreateEditForm game={game} displayAddNewGame={displayAddNewGame} addNewGame={addNewGame}/>}
+            {isEditing && <CreateEditForm game={game} editGame={editGame} displayAddNewGame={displayAddNewGame} addNewGame={addNewGame}/>}
           </li>
         </>
     )

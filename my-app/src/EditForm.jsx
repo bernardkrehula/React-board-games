@@ -4,7 +4,7 @@ import './Btn.css'
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) => {
+const CreateEditForm = ({ addNewGame, game, editGame }) => {
     const isEditingSession = game;
     //Ako sam primio selectedGame znam da je editingSession 
     //Sacuvaj to u neku const i postavi terinary state 
@@ -12,6 +12,7 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
   
     const [ form, setForm ] = useState(isEditingSession ? 
         {
+            //Proslijediti kao game
             name: game.name,
             info: game.info,
             rating: game.rating,
@@ -20,7 +21,6 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
             duration: parseInt(game.duration),
             difficulty: game.difficulty,
             type: game.type,
-            isEdited: true,
             id: game.id
         }
         :
@@ -33,7 +33,6 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
             duration: '',
             difficulty: 'Easy',
             type: 'Strategy',
-            isEdited: false 
     }
     )
   
@@ -51,14 +50,12 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        addNewGame(form)
-        isFormActive ? displayAddNewGame() : setForm(prev => ({...prev, isEdited: !prev.isEdited}))
+        isEditingSession ? editGame(form) : addNewGame(form)
     };
-    console.log(form.isEdited) 
+
     return(
         <>
-            <form className="new-game-comp" style={{display: isFormActive || form.isEdited ? 'block' : 'none'}} onSubmit={handleSubmit}>
+            <form className="new-game-comp" onSubmit={handleSubmit}>
                 <h1>Set games rules</h1>
                     <ul>
                         <li>
@@ -111,7 +108,7 @@ const CreateEditForm = ({isFormActive, addNewGame, displayAddNewGame, game }) =>
                             </select>
                         </li>
                     </ul>
-                    <Btn variation='primary' marginTop='marginTop' type='submit' onClick={() => {}}>Add</Btn>
+                    <Btn variation='primary' marginTop='marginTop' type='submit'>Add</Btn>
             </form>
         </>
     )
