@@ -3,7 +3,7 @@ import Btn from "./Btn";
 import './Btn.css'
 import CreateEditForm from "./EditForm";
 
-const SingleGame = ({ game, displayAddNewGame, addNewGame }) => {
+const SingleGame = ({ game }) => {
     const [ getGame, setGame ] = useState(game)
     const [ isEditing, setIsEditing ] = useState(false);
     const { id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type } = getGame; 
@@ -32,6 +32,7 @@ const SingleGame = ({ game, displayAddNewGame, addNewGame }) => {
     }
     const editGame = (editedGame) => {
       setGame(editedGame)
+      setIsEditing(prev => !prev)
     }
     
     return(
@@ -62,7 +63,7 @@ const SingleGame = ({ game, displayAddNewGame, addNewGame }) => {
             </div>
             <Btn variation='transparent' onClick={() => {handleLearnMore()}}>Learn More</Btn>
             <Btn name='edit-btn' variation='primary' size='size' type='submit' onClick={() => {handleClick()}}>Edit</Btn>
-            {isEditing && <CreateEditForm game={game} editGame={editGame} displayAddNewGame={displayAddNewGame} addNewGame={addNewGame}/>}
+            {isEditing && <CreateEditForm game={game} editGame={editGame} />}
           </li>
         </>
     )

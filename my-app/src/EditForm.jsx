@@ -2,9 +2,8 @@ import './EditForm.css'
 import Btn from './Btn';
 import './Btn.css'
 import { useState } from 'react';
-import { useEffect } from 'react';
 
-const CreateEditForm = ({ addNewGame, game, editGame }) => {
+const CreateEditForm = ({ createForm, game, editGame }) => {
     const isEditingSession = game;
     //Ako sam primio selectedGame znam da je editingSession 
     //Sacuvaj to u neku const i postavi terinary state 
@@ -50,7 +49,7 @@ const CreateEditForm = ({ addNewGame, game, editGame }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        isEditingSession ? editGame(form) : addNewGame(form)
+        isEditingSession ? editGame(form) : createForm(form)
     };
 
     return(

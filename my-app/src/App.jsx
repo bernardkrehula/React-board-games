@@ -13,12 +13,11 @@ function App() {
   const [ isFormActive, setActiveFrom ] = useState(false);
   const printRef = React.useRef(null);
 
-  const addNewGame = (newGame) => {
-    console.log(newGame)
+  const createForm = (newGame) => {
     setGames(prev => [...prev, newGame])
     setActiveFrom(prev => !prev)
   }
-  const displayAddNewGame = () => {
+  const displayCreateForm = () => {
     setActiveFrom(prev => !prev);
   }
  
@@ -48,18 +47,18 @@ function App() {
       <div className='main'>
         <h1 className='title'>Board games</h1>
         <div className='btns'>
-          <Btn variation='primary' onClick={() => {displayAddNewGame()}}>Add new game</Btn>
+          <Btn variation='primary' onClick={() => {displayCreateForm()}}>Add new game</Btn>
           <Btn variation='primary' margin='margin' onClick={() => {downloadPdf()}}>Save as PDF</Btn>
         </div>
         <ul className='games'  ref={printRef}>
           {getGames.map(game => {
             return(
-               <SingleGame key={game.id} game={game} displayAddNewGame={displayAddNewGame} addNewGame={addNewGame}/>
+               <SingleGame key={game.id} game={game} displayCreateForm={displayCreateForm} />
             )
           })}
         </ul>
         {
-          isFormActive ? <CreateEditForm addNewGame={addNewGame} displayAddNewGame={displayAddNewGame}/> : ''
+          isFormActive ? <CreateEditForm createForm={createForm} displayCreateForm={displayCreateForm}/> : ''
         }
         </div>
     </>
