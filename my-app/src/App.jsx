@@ -18,9 +18,6 @@ function App() {
     setGames(prev => [...prev, newGame])
     setActiveFrom(prev => !prev)
   }
-  const editGame = (editgame) => {
-    setGames(prev => prev.map(game => game.id === editgame.id ? {...editgame} : prev))
-  }
   const displayAddNewGame = () => {
     setActiveFrom(prev => !prev);
   }
@@ -57,7 +54,7 @@ function App() {
         <ul className='games'  ref={printRef}>
           {getGames.map(game => {
             return(
-               <SingleGame key={game.id} editGame={editGame} game={game} displayAddNewGame={displayAddNewGame} addNewGame={addNewGame}/>
+               <SingleGame key={game.id} game={game} displayAddNewGame={displayAddNewGame} addNewGame={addNewGame}/>
             )
           })}
         </ul>

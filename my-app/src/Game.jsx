@@ -3,10 +3,10 @@ import Btn from "./Btn";
 import './Btn.css'
 import CreateEditForm from "./EditForm";
 
-const SingleGame = ({ game, displayAddNewGame, addNewGame, editGame }) => {
-    const { id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type } = game;
-    
+const SingleGame = ({ game, displayAddNewGame, addNewGame }) => {
+    const [ getGame, setGame ] = useState(game)
     const [ isEditing, setIsEditing ] = useState(false);
+    const { id, name, info, rating, players, allowedPlayerAge, duration, difficulty, type } = getGame; 
 
     const DisplayRating = ({rating}) => {
         const stars = [];
@@ -29,6 +29,9 @@ const SingleGame = ({ game, displayAddNewGame, addNewGame, editGame }) => {
     }
     const handleLearnMore = () => {
       window.open('https://github.com/bernardkrehula');
+    }
+    const editGame = (editedGame) => {
+      setGame(editedGame)
     }
     
     return(
